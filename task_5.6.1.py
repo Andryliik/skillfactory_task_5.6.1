@@ -58,14 +58,13 @@ def get_result():
 # основная программа
 game_over = False
 player1 = True
-player2 = False
 while game_over == False:
 
     # 1. Показываем карту
     print_maps()
 
     # 2. Спросим у играющего куда делать ход
-    if player1 == True and player2 == False:
+    if player1 == True:
         symbol = "X"
         string_maps, column_maps = input("Игрок 1 (Х), ваш ход: ").split()
     else:
@@ -78,10 +77,9 @@ while game_over == False:
     if step_maps(string_maps, column_maps, symbol) == False:
         print("Введены неверные координаты, попробуйте ещё раз")
         player1 = player1
-        player2 = player2
     else:
         step_maps(string_maps, column_maps, symbol)
-        player1, player2 = not (player1), not (player2)
+        player1 = not (player1)
 
     # 4. определим победителя
     win = get_result()
